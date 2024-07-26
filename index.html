@@ -17,6 +17,8 @@
                 <th>C.Hours</th>
                 <th>from</th>
                 <th>to</th>
+                <th>update</th>
+
             </tr>
         </thead>
         <tbody id="student-table-body">
@@ -29,16 +31,15 @@
     <input type="button" name="Submit3" value= "add Course" action="form">
 </nav>
     <form id="add-student-form">
-        Course Code<input type="text" id="name" name="name"value=""><br>
-         Course Title<input type="text" id="name" name="name"value=""><br>
-        <label>C.Hours</label><input type="number" id="semester-works" name="semester-works" min="1" max="4" value="0"></label><br>
-        <p> <label>from:<input type= "time" /> </label> </p><br>
-        <p> <label>to:<input type= "time" /> </label> </p><br>
-        <button type="submit" action="nav">Add Student</button>
+        <br>Course Code<input type="text" id="Code" name="name"value=""><br><br>
+         Course Title<input type="text" id="course-title" name="name"value=""><br><br>
+        <label>C.Hours</label><input type="C-hours" id="semester-works" name="semester-works" min="1" max="4" value="0"></label><br> <br>
+        <p> <label>from:<input ID="Ftime" type= "time" /> </label> </p><br>
+        <p> <label>to:<input ID="Ttime" type= "time" /> </label> </p><br><br>
+        <button type="submit" action="nav">submit</button>
     </form>
     <section id="course-statistics">
         <p>Total Courses: <span id="total-Courses">0</span></p>
-        <p>Highest Total Marks: <span id="highest-total-marks">0</span></p>
     </section>
  
     <script src="script.js"></script>
