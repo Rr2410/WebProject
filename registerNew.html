@@ -41,7 +41,7 @@
         box-sizing: border-box;
     }
     input[type="submit"] {
-        background-color: rgb(167, 132, 163);
+        background-color: rgb(167, 132, 163) ;
         color: white;
         padding: 10px 20px;
         border: none;
@@ -52,40 +52,38 @@
     input[type="submit"]:hover {
         background-color: #e09bcd;
     }
-    .link-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-    .link-container a {
-        color: rgb(167, 132, 163);
-        text-decoration: none;
-        font-size: 16px;
-    }
-    .link-container a:hover {
-        text-decoration: underline;
-    }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>User Login</h2>
+    <h2>User Information Form</h2>
     <form action="#" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Major:</label>
+            <input type="text" id="text" name="major" required>
+        </div>
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="name">Password:</label>
-            <input type="text" id="name" name="name" required>
+            <label for="Password">Password:</label>
+            <input type="password" id="password" name="password" required>
         </div>
         <div class="form-group">
-            <input type="submit" value="Login">
+            <input type="submit" value="Register">
         </div>
+        
     </form>
-    <div class="link-container">
-        <p>Don't have an account? <a href="registernew.html">Register here</a></p>
-    </div>
 </div>
 
 </body>

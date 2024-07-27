@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Account Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(167, 132, 163);
+            padding: 10px 20px;
+            color: white;
+        }
+        .navbar-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .account-info {
+            margin-bottom: 20px;
+        }
+        .account-info p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group a {
+            color: rgb(167, 132, 163);
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand" > <a href="timetable.html">Coursify</a></div>
+        <div>
+            <a href="logout.html">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Account Information</h1>
+        <div class="account-info">
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>Major:</strong> Computer Science</p>
+            <p><strong>Age:</strong> 22</p>
+            <p><strong>Date of Birth:</strong> January 1, 2002</p>
+        </div>
+        <div class="form-group">
+            <a href="reset-password.html">Reset Password</a>
+        </div>
+    </div>
+</body>
+</html>

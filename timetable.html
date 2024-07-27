@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-brand" > <a href="timetable.html">Coursify</a></div>
+        <div>
+            <a href="logout.html">Logout</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h1 style="background-color: rgb(167, 132, 163); text-align: center;">Student Schedule</h1>
+        <nav>
+            <table id="student-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Title</th>
+                        <th>C.Hours</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody id="student-table-body">
+                    <tr><td>CS 180</td><td>Cyber Security & Ethics</td><td>4</td><td>8</td><td>9:40</td><td></td></tr>
+                    <tr><td>CS 125</td><td>Digital Design</td><td>4</td><td>9</td><td>10:30</td><td></td></tr>
+                    <tr><td>CS 392</td><td>Software Engineering</td><td>3</td><td>11</td><td>12:40</td><td></td></tr>
+                    <tr><td>CS 361</td><td>Artificial Intelligence</td><td>4</td><td>1</td><td>3</td><td></td></tr>
+                </tbody>
+            </table>
+            <br>
+            <input type="button" name="Submit3" value="Add Course" action="form">
+        </nav>
+
+        <section id="course-statistics" class="text-center mt-3">
+            <p>Total Courses: <span id="total-Courses">0</span></p>
+        </section>
+        
+        <h2 class="text-center mt-5">Click the Button to Navigate</h2>
+        <div class="button-container">
+            <a href="notes.html">Go to Page 1</a>
+            <a href="gg.html">Go to Page 2</a>
+            <a href="add.html">Go to Page 3</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function updateStatistics() {
+            const totalCourses = document.querySelectorAll('#student-table-body tr').length;
+            document.getElementById('total-Courses').textContent = totalCourses;
+        }
+
+        document.addEventListener('DOMContentLoaded', updateStatistics);
+    </script>
+</body>
+</html>
