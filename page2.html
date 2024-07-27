@@ -44,5 +44,22 @@
         <a href="add.html">Go to Page 3</a>
     </div>
 
+    
+    <script>function updateStatistics() {
+    const totalStudents = students.length;
+    const highestTotalMarks = Math.max(...students.map((student) => student.total));
+
+    document.getElementById('total-students').textContent = totalStudents;
+    document.getElementById('highest-total-marks').textContent = highestTotalMarks;
+}
+
+function deleteStudent(index) {
+    students.splice(index, 1);
+    updateTable();
+    updateStatistics();
+}
+
+    
+</script>
 </body>
 </html>
