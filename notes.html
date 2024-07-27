@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes/To Do</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    textarea {
+        width: 100%;
+        height: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    button {
+        background-color:rgb(167, 132, 163) ;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color:#e09bcd;
+    }
+</style>
 </head>
 <body>
-    
+
+<div class="container">
+    <h2 style="background-color: rgb(167, 132, 163);">Notes Page</h2>
+    <textarea id="notes" placeholder="Write your notes here..."></textarea>
+    <div class="button-container">
+        <button onclick="saveNotes()">Save Notes</button>
+    </div>
+</div>
+
+<script>
+    // Function to save notes to local storage
+    function saveNotes() {
+        const notes = document.getElementById('notes').value;
+        localStorage.setItem('userNotes', notes);
+        alert('Notes saved successfully!');
+    }
+
+    // Function to load saved notes from local storage
+    window.onload = function() {
+        const savedNotes = localStorage.getItem('userNotes');
+        if (savedNotes) {
+            document.getElementById('notes').value = savedNotes;
+        }
+    };
+</script>
+
 </body>
 </html>
