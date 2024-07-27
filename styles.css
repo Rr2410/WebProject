@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: black;
+}
+
+#student-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#student-table th, #student-table td {
+    border: 1px solid rgb(103, 75, 84);
+    padding: 10px;
+    text-align: left;
+}
+
+#student-table tr:hover {
+    background-color: rgb(208, 146, 168);
+}
+
+#student-table tr:hover .delete-button {
+    visibility: visible;
+}
+
+.delete-button {
+    visibility: hidden;
+    cursor: pointer;
+}
+
+#student-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#course-statistics {
+    margin-top: 20px;
+}
+#button{background-color: red; color: #f2f2f2;}
