@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Marks Table</title>
+    <title>Add Course</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
     <div class="navbar">
-        <div class="navbar-brand" > <a href="timetable.html">Coursify</a></div>
-        <div>
-            <a href="logout.html">Logout</a>
-        </div>
+        <div class="navbar-brand"><a href="timetable.html">Coursify</a></div>
+        <div><a href="logout.html">Logout</a></div>
     </div>
 
-    <h1 style="background-color: rgb(167, 132, 163);">Student schedule</h1>
+    <h1 style="background-color: rgb(167, 132, 163);">Add Course</h1>
     
-    <form id="add-student-form">
-        <br>Course Code<input type="text" id="Code" name="name"value=""><br><br>
-         Course Title<input type="text" id="course-title" name="name"value=""><br><br>
-        <label>C.Hours</label><input type="C-hours" id="semester-works" name="semester-works" min="1" max="4" value="0"></label><br> <br>
-        <p> <label>from:<input ID="Ftime" type= "time" /> </label> </p><br>
-        <p> <label>to:<input ID="Ttime" type= "time" /> </label> </p><br><br>
-        <button type="submit" action="nav">submit</button>
+    <form id="add-course-form" action="/addcourse" method="POST">
+        <br>Course Code: <input type="text" id="code" name="code" required><br><br>
+        Course Title: <input type="text" id="title" name="title" required><br><br>
+        <label>C.Hours: <input type="number" id="hours" name="hours" min="1" max="4" required></label><br><br>
+        <label>Day: <input id="day" type="day" name="day" required></label><br><br>
+        <label>From: <input id="from" type="time" name="from" required></label><br><br>
+        <label>To: <input id="to" type="time" name="to" required></label><br><br>
+        <label>Location: <input id="location" type="text" name="location" required></label><br><br>
+        <label>Experation Date: <input id="date" type="date" name="date" required></label><br><br>
+        <button type="submit">Submit</button>
     </form>
-    <script src="script.js"></script>
+    
+    <script src="code.js"></script>
 </body>
 </html>
