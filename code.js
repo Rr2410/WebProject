@@ -153,6 +153,58 @@ app.get('/timetable-data', async (req, res) => {
   }
 });
 
+// route to add a note
+// Route to save notes
+// Add a new note
+app.post('/addnote', async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send('Unauthorized');
+  }
+
+  const { email } = req.session.user;
+  const { title, content } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.notes.push({ title, content });
+      await user.save();
+      res.redirect('/notes.html');
+    } else {
+      res.status(404).send('User not found');
+    }
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
+
+// Fetch all notes
+app.get('/notes-data', async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send('Unauthorized');
+  }
+
+  const { email } = req.session.user;
+
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      res.json(user.notes);
+    } else {
+      res.status(404).send('User not found');
+    }
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
+
+app.get('/notes.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'notes.html'));
+});
+
+app.get('/viewNotes.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'viewNotes.html'));
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

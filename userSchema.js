@@ -9,8 +9,13 @@ const timetableSchema = new Schema({
   courseTitle: String,
   location: String,
   creditHours: Number,
-  expirationDate: { type: Date, required: true } 
+  expirationDate: { type: Date, required: true },
 });
+
+const noteSchema = new Schema({
+  title: String,
+  content: String
+})
 
 const userSchema = new Schema({
   name: { type: String, required: true },
@@ -19,7 +24,8 @@ const userSchema = new Schema({
   timetable: [timetableSchema], 
   notes: [String], 
   dob: { type: Date, required: true },
-  major: { type: String, required: true }
+  major: { type: String, required: true },
+  notes: [noteSchema],
 });
 
 const User = mongoose.model('User', userSchema);

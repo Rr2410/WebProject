@@ -23,6 +23,15 @@
         margin-bottom: 20px;
         text-align: center;
     }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
     textarea {
         width: 100%;
         height: 300px;
@@ -38,7 +47,7 @@
         margin-top: 20px;
     }
     button {
-        background-color:rgb(167, 132, 163) ;
+        background-color: rgb(167, 132, 163);
         color: white;
         padding: 10px 20px;
         border: none;
@@ -47,42 +56,71 @@
         font-size: 16px;
     }
     button:hover {
-        background-color:#e09bcd;
+        background-color: #e09bcd;
     }
 </style>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="navbar">
-        <div class="navbar-brand" > <a href="timetable.html">Coursify</a></div>
+        <div class="navbar-brand"><a href="timetable.html">Coursify</a></div>
         <div>
             <a href="logout.html">Logout</a>
         </div>
     </div>
 <div class="container">
     <h2 style="background-color: rgb(167, 132, 163);">Notes Page</h2>
-    <textarea id="notes" placeholder="Write your notes here..."></textarea>
+    <input type="text" id="note-title" placeholder="Note Title">
+    <textarea id="note-content" placeholder="Write your notes here..."></textarea>
     <div class="button-container">
-        <button onclick="saveNotes()">Save Notes</button>
+        <button onclick="saveNote()">Save Note</button>
     </div>
+    <h2 style="background-color: rgb(167, 132, 163);">Saved Notes</h2>
+    <div id="notes-list"></div>
 </div>
 
 <script>
-    // Function to save notes to local storage
-    function saveNotes() {
-        const notes = document.getElementById('notes').value;
-        localStorage.setItem('userNotes', notes);
-        alert('Notes saved successfully!');
+    // Function to save notes to the server
+    async function saveNote() {
+        const title = document.getElementById('note-title').value;
+        const content = document.getElementById('note-content').value;
+
+        const response = await fetch('/addnote', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ title, content })
+        });
+
+        if (response.ok) {
+            alert('Note saved successfully!');
+            loadNotes();
+        } else {
+            alert('Failed to save note');
+        }
     }
 
-    // Function to load saved notes from local storage
-    window.onload = function() {
-        const savedNotes = localStorage.getItem('userNotes');
-        if (savedNotes) {
-            document.getElementById('notes').value = savedNotes;
-        }
-    };
-</script>
+    // Function to load saved notes from the server
+    async function loadNotes() {
+        const response = await fetch('/notes-data');
+        const notes = await response.json();
 
+        const notesList = document.getElementById('notes-list');
+        notesList.innerHTML = '';
+
+        notes.forEach(note => {
+            const noteDiv = document.createElement('div');
+            noteDiv.classList.add('note');
+            noteDiv.innerHTML = `
+                <h3>${note.title}</h3>
+                <p>${note.content}</p>
+            `;
+            notesList.appendChild(noteDiv);
+        });
+    }
+
+    window.onload = loadNotes;
+</script>
 </body>
 </html>
