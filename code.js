@@ -92,7 +92,7 @@ app.post('/register', async (req, res) => {
       notes: []
     });
     await newUser.save();
-    res.redirect('/viewaccount.html');
+    res.redirect('/login.html');
   } catch (error) {
     res.status(500).send('Error! Try again later.');
   }
@@ -197,6 +197,31 @@ app.get('/notes-data', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+//route to handle account information
+app.get('/account', async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send('Unauthorized');
+  }
+
+  const { email } = req.session.user;
+
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      res.status(200).json({
+        name: user.name,
+        email: user.email,
+        major: user.major,
+        dob: user.dob
+      });
+    } else {
+      res.status(404).send('User not found');
+    }
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
+
 
 app.get('/notes.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'notes.html'));

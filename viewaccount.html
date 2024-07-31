@@ -60,7 +60,7 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="navbar-brand" > <a href="timetable.html">Coursify</a></div>
+        <div class="navbar-brand"><a href="timetable.html">Coursify</a></div>
         <div>
             <a href="logout.html">Logout</a>
         </div>
@@ -68,15 +68,50 @@
     <div class="container">
         <h1>Account Information</h1>
         <div class="account-info">
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>Email:</strong> john.doe@example.com</p>
-            <p><strong>Major:</strong> Computer Science</p>
-            <p><strong>Age:</strong> 22</p>
-            <p><strong>Date of Birth:</strong> January 1, 2002</p>
+            <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+            <p><strong>Major:</strong> <span id="major">Loading...</span></p>
+            <p><strong>Age:</strong> <span id="age">Loading...</span></p>
+            <p><strong>Date of Birth:</strong> <span id="dob">Loading...</span></p>
         </div>
         <div class="form-group">
             <a href="reset-password.html">Reset Password</a>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/account');
+                if (response.ok) {
+                    const user = await response.json();
+    
+                    document.getElementById('name').textContent = user.name;
+                    document.getElementById('email').textContent = user.email;
+                    document.getElementById('major').textContent = user.major;
+    
+                    const dob = new Date(user.dob);
+                    document.getElementById('dob').textContent = dob.toDateString();
+    
+                    const age = calculateAge(dob);
+                    document.getElementById('age').textContent = age;
+                } else {
+                    console.error('Failed to fetch user data:', response.statusText);
+                    alert('Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                alert('Failed to fetch user data');
+            }
+        });
+    
+        function calculateAge(dob) {
+            const diffMs = Date.now() - dob.getTime();
+            const ageDt = new Date(diffMs);
+    
+            return Math.abs(ageDt.getUTCFullYear() - 1970);
+        }
+    </script>
+    
 </body>
 </html>
