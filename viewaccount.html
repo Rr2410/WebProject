@@ -12,14 +12,7 @@
             background-color: #f0f0f0;
             padding: 20px;
         }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgb(167, 132, 163);
-            padding: 10px 20px;
-            color: white;
-        }
+      
         .navbar-brand {
             font-size: 1.5em;
             font-weight: bold;
@@ -60,10 +53,17 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="navbar-brand" > <a href="timetable.html">Coursify</a></div>
-        <div>
-            <a href="logout.html">Logout</a>
-        </div>
+        <div class="container3">
+            <div class="dropdown">
+              <button class="button3">Menu</button>
+              <div class="menu">
+                <a href="viewaccount.html">My Account</a>
+                <a href="timetable.html">My Schedule</a>
+                <a href="notes.html">Notes</a>
+                <a href="logout.html">Logout</a>
+              </div>
+            </div>
+          </div>
     </div>
     <div class="container">
         <h1>Account Information</h1>
