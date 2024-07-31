@@ -6,8 +6,7 @@ const MongoStore = require('connect-mongo');
 const User = require('./userSchema');
 const path = require('path');
 const bcrypt = require('bcrypt');
-require('dotenv').config(); // Ensure dotenv is loaded before usage
-
+require('dotenv').config(); 
 const app = express();
 const port = 3003;
 
@@ -28,7 +27,7 @@ app.use(session({
 }));
 
 // Route to handle form submission for adding a course
-// Route to handle form submission for adding a course
+
 app.post('/addcourse', async (req, res) => {
   console.log('Received request at /addcourse');
 
@@ -153,8 +152,7 @@ app.get('/timetable-data', async (req, res) => {
   }
 });
 
-// route to add a note
-// Route to save notes
+
 // Add a new note
 app.post('/addnote', async (req, res) => {
   if (!req.session.user) {
