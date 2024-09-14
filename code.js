@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname)));
 
 // Configure session management with MongoDB
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  secret: process.env.SESSION_SECRET || '#',
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/DBweb' })
